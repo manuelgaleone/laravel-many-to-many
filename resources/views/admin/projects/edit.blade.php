@@ -32,6 +32,18 @@
         </select>
     </div>
     <div class="mb-3">
+        <div class="mb-3">
+            <select multiple class="form-select" name="technologies[]" id="technologies">
+                <option selected disabled>Seleziona una Tecnologia</option>
+                @forelse ($technologies as $technology)
+                <option value="{{$technology->id}}">{{$technology->name}}</option>
+                @empty
+                <option selected disabled>Nessuna Tecnologia presente</option>
+                @endforelse
+            </select>
+        </div>
+    </div>
+    <div class="mb-3">
         <div class="d-flex align-items-center gap-4">
             <img width="200px" src="{{asset('storage/' . $project->image)}}">
             <input type="file" class="form-control" name="image" id="image" placeholder="Aggiungi un'immagine" aria-describedby="coverImgHelper">
