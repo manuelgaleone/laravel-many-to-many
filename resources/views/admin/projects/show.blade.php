@@ -12,5 +12,8 @@
     <h6>
         Category: {{$project->category->name ? $project->category->name : 'Non categorizzato!'}}
     </h6>
+    <h5>
+        Technologies:
+    </h5>
 </div>
 @endsection
