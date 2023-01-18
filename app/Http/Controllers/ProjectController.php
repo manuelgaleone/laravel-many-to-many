@@ -6,6 +6,7 @@ use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use App\Models\Category;
 use App\Models\Project;
+use App\Models\Technology;
 use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
@@ -29,9 +30,10 @@ class ProjectController extends Controller
      */
     public function create()
     {
+        $technologies = Technology::all();
         $categories = Category::all();
         //dd($categories);
-        return view('admin.projects.create', compact('categories'));
+        return view('admin.projects.create', compact('categories', 'technologies'));
     }
 
     /**
