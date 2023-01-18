@@ -31,13 +31,18 @@
         </select>
     </div>
     <div class="mb-3">
-        <select class="form-select" name="category_id" id="category_id" aria-label="Default select example">
-            <option disabled selected>Scegli una Tecnologia</option>
-            @foreach ($technologies as $technology) {
-            <option value="{{$technology->id}}">{{$technology->name}}</option>
-            }
-            @endforeach
-        </select>
+        <div class="mb-3">
+            <select multiple class="form-select" name="technologies[]" id="technologies">
+                <option selected disabled>Seleziona una Tecnologia</option>
+                @forelse ($technologies as $technology)
+                <option value="{{$technology->id}}">{{$technology->name}}</option>
+
+                @empty
+                <option selected disabled>Nessuna Tecnologia presente</option>
+
+                @endforelse
+            </select>
+        </div>
     </div>
     <div class="mb-3">
         <textarea class="form-control" name="content" id="content" placeholder="Oggi sono andato al mare..." rows="3" required>{{old('content')}}</textarea>
