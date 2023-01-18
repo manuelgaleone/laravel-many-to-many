@@ -36,10 +36,8 @@
                 <option selected disabled>Seleziona una Tecnologia</option>
                 @forelse ($technologies as $technology)
                 <option value="{{$technology->id}}">{{$technology->name}}</option>
-
                 @empty
                 <option selected disabled>Nessuna Tecnologia presente</option>
-
                 @endforelse
             </select>
         </div>

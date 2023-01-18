@@ -60,7 +60,9 @@ class ProjectController extends Controller
         $val_data['slug'] = $project_slug;
         //creo il post
 
-        Project::create($val_data);
+        $project = Project::create($val_data);
+
+        $project->technologies()->attach($request->technologies);
         //redirect
         return to_route('admin.projects.index');
     }
