@@ -118,6 +118,12 @@ class ProjectController extends Controller
 
         $project->update($val_data);
 
+        if ($request->has('technologies')) {
+            $project->technologies()->sync($val_data['technologies']);
+        } else {
+            $project->technologies()->sync([]);
+        }
+
         return to_route('admin.projects.index')->with('message', 'Post edited correctly!');
     }
 

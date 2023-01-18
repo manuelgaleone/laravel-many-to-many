@@ -34,12 +34,16 @@
     <div class="mb-3">
         <div class="mb-3">
             <select multiple class="form-select" name="technologies[]" id="technologies">
-                <option selected disabled>Seleziona una Tecnologia</option>
-                @forelse ($technologies as $technology)
-                <option value="{{$technology->id}}">{{$technology->name}}</option>
-                @empty
-                <option selected disabled>Nessuna Tecnologia presente</option>
-                @endforelse
+                <option value="" disabled>Seleziona una Tecnologia</option>
+                @foreach ($technologies as $technology)
+    
+                @if ($errors->any())
+                <option value="{{$technology->id}}" {{ in_array($technology->id, old('technologies', [])) ? 'selected' : '' }}>{{$technology->name}}</option>
+                @else
+                <option value="{{$technology->id}}" {{ $project->technologies->contains($technology->id) ? 'selected' : ''}}>{{$technology->name}}</option>
+                @endif
+                @endforeach
+    
             </select>
         </div>
     </div>
