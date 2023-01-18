@@ -62,7 +62,9 @@ class ProjectController extends Controller
 
         $project = Project::create($val_data);
 
-        $project->technologies()->attach($request->technologies);
+        if ($request->has('technologies')) {
+            $project->technologies()->attach($val_data['technologies']);
+        }
         //redirect
         return to_route('admin.projects.index');
     }

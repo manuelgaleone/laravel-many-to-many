@@ -12,8 +12,15 @@
     <h6>
         Category: {{$project->category->name ? $project->category->name : 'Non categorizzato!'}}
     </h6>
-    <h5>
-        Technologies:
-    </h5>
+    <div class="tag d-flex justify-content-center">
+        Tecnologie: 
+        @if(count($project->technologies) > 0 )
+        @foreach ($project->technologies as $technology)
+        <span> #{{$technology->name}} </span>
+        @endforeach
+        @else
+        <span>Nessun Tag associato</span>
+        @endif
+    </div>
 </div>
 @endsection
